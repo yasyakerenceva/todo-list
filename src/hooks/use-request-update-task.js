@@ -1,19 +1,13 @@
-import { SERVER_URL } from '../utils';
+import { ref, set } from 'firebase/database';
+import { db } from '../firebase';
 
-export const useRequestUpdateTask = (refreshTasks, setRefreshTasks) => {
+export const useRequestUpdateTask = () => {
 	const requestUpdateTask = (idTask, valueTask) => {
-		fetch(`${SERVER_URL}/${idTask}`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			body: JSON.stringify({
-				id: idTask,
-				title: valueTask,
-			}),
-		})
-			.then((rawResponse) => rawResponse.json())
-			.then(() => {
-				setRefreshTasks(!refreshTasks);
-			});
+		const taskDbRef = ref(db, `tasks/${idTask}`);
+
+		set(taskDbRef, {
+			title: valueTask,
+		});
 	};
 
 	return {

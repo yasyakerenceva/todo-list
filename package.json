@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "firebase": "^10.6.0",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,17 +20,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-	"watch": "json-server --watch src/db.json --port 3005"
+    "watch": "json-server --watch src/db.json --port 3005"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest",
-	  "prettier"
+      "prettier"
     ]
   },
   "plugins": [
-	"prettier"
+    "prettier"
   ],
   "browserslist": {
     "production": [

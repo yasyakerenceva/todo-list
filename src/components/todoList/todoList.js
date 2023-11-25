@@ -1,17 +1,11 @@
 import { TodoTask } from '../todoTask/todoTask';
 import styles from './todoList.module.css';
 
-export const TodoList = ({ tasks, refreshTasks, setRefreshTasks }) => {
+export const TodoList = ({ tasks }) => {
 	return (
 		<ul className={styles.list}>
-			{tasks.map((task) => (
-				<TodoTask
-					key={task.id}
-					id={task.id}
-					title={task.title}
-					refreshTasks={refreshTasks}
-					setRefreshTasks={setRefreshTasks}
-				/>
+			{Object.entries(tasks).map(([id, { title }]) => (
+				<TodoTask key={id} id={id} title={title} />
 			))}
 		</ul>
 	);

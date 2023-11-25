@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useRequestPostTask } from '../../hooks/index';
 import styles from './todoForm.module.css';
 
-export const TodoForm = ({ refreshTasks, setRefreshTasks }) => {
+export const TodoForm = () => {
 	const [valueTask, setValueTask] = useState('');
 
-	const { requestAddTask } = useRequestPostTask(refreshTasks, setRefreshTasks);
+	const { requestAddTask } = useRequestPostTask();
 
 	const handleSumbitAddTask = (e) => {
 		e.preventDefault();

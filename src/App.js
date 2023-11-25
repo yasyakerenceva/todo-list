@@ -5,22 +5,17 @@ import { TodoForm, Filter, Search, TodoList } from './components/index';
 import { useDebounce, useRequestGetTasks } from './hooks';
 
 export const App = () => {
-	const [refreshTasks, setRefreshTasks] = useState(false);
-	const [isSortAsc, setIsSortAsc] = useState(false);
 	const [search, setSearch] = useState('');
+	const [isSortAsc, setIsSortAsc] = useState(false);
 	const debouncedSearch = useDebounce(search, 250);
-	const { isLoading, tasks } = useRequestGetTasks(
-		refreshTasks,
-		isSortAsc,
-		debouncedSearch,
-	);
+	const { isLoading, tasks } = useRequestGetTasks(isSortAsc, debouncedSearch);
 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.header}>
-				<TodoForm refreshTasks={refreshTasks} setRefreshTasks={setRefreshTasks} />
+				<TodoForm />
 				<Filter
-					isCheckingNumTasks={tasks.length}
+					isCheckingNumTasks={Object.keys(tasks).length}
 					isSortAsc={isSortAsc}
 					setIsSortAsc={setIsSortAsc}
 				/>
@@ -29,16 +24,12 @@ export const App = () => {
 				<Search search={search} setSearch={setSearch} />
 				{isLoading ? (
 					<div className={styles.loader}></div>
-				) : !tasks.length ? (
+				) : !Object.keys(tasks).length ? (
 					<div className={styles.img}>
 						<img src={TaskDefaultImg} alt="add-task" />
 					</div>
 				) : (
-					<TodoList
-						tasks={tasks}
-						refreshTasks={refreshTasks}
-						setRefreshTasks={setRefreshTasks}
-					/>
+					<TodoList tasks={tasks} />
 				)}
 			</div>
 		</div>
