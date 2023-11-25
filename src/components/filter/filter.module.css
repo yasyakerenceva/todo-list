@@ -1,0 +1,39 @@
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 70px;
+}
+
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.container svg {
+	fill: grey;
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+.container input:checked ~ svg path {
+	fill: #6c63ff;
+}
+
+.container svg:hover {
+	transform: scale(1.1);
+}
+
+.container input:disabled ~ svg {
+	cursor: auto;
+	pointer-events: none;
+}
+
+.container input:disabled ~ svg path {
+	fill: rgba(128, 128, 128, 0.3);
+}
