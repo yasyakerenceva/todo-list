@@ -1,0 +1,21 @@
+.list {
+	padding: 0;
+	margin-top: 20px;
+	height: calc(100% - 70px);
+	overflow-y: auto;
+}
+
+.list::-webkit-scrollbar {
+	width: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #6c63ff;
+}
+
+.list::-webkit-scrollbar-track {
+	box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+	background-color: #fff;
+	border-radius: 10px;
+}
