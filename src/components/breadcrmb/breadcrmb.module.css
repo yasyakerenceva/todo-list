@@ -1,0 +1,27 @@
+.list {
+	width: fit-content;
+}
+
+.item {
+	cursor: pointer;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+.link > svg {
+	margin-right: 5px;
+	margin-left: 5px;
+	transition: all 0.3s ease-in;
+}
+
+.link:hover > svg {
+	transform: translateX(-5px);
+}
+
+.text {
+	font-size: 18px;
+	color: #000;
+}
