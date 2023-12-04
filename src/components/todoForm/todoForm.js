@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useRequestPostTask } from '../../hooks/index';
 import styles from './todoForm.module.css';
+import { AppContext } from '../../context';
 
-export const TodoForm = ({ refreshTasks, setRefreshTasks }) => {
+export const TodoForm = () => {
+	const { refreshTasks, setRefreshTasks } = useContext(AppContext);
 	const [valueTask, setValueTask] = useState('');
 
 	const { requestAddTask } = useRequestPostTask(refreshTasks, setRefreshTasks);

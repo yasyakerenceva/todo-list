@@ -1,8 +1,10 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useRequestDeleteTask, useRequestUpdateTask } from '../../hooks';
 import styles from './todoTask.module.css';
+import { AppContext } from '../../context';
 
-export const TodoTask = ({ id, title, refreshTasks, setRefreshTasks }) => {
+export const TodoTask = ({ id, title }) => {
+	const { refreshTasks, setRefreshTasks } = useContext(AppContext);
 	const { requestDeleteTask } = useRequestDeleteTask(refreshTasks, setRefreshTasks);
 	const { requestUpdateTask } = useRequestUpdateTask(refreshTasks, setRefreshTasks);
 	const [isInputVisible, setIsInputVisible] = useState(false);
