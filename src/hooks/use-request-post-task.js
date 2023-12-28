@@ -1,6 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { SERVER_URL } from '../utils';
 
-export const useRequestPostTask = (refreshTasks, setRefreshTasks) => {
+export const useRequestPostTask = () => {
+	const refreshTasks = useSelector((state) => state.refreshTasks);
+	const dispatch = useDispatch();
 	const requestAddTask = (valueTask) => {
 		fetch(SERVER_URL, {
 			method: 'POST',
@@ -11,7 +14,7 @@ export const useRequestPostTask = (refreshTasks, setRefreshTasks) => {
 		})
 			.then((rawResponse) => rawResponse.json())
 			.then(() => {
-				setRefreshTasks(!refreshTasks);
+				dispatch({ type: 'REFRESH_TASK', payload: !refreshTasks });
 			});
 	};
 

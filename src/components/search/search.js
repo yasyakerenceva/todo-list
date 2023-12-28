@@ -1,5 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './search.module.css';
-export const Search = ({ search, setSearch }) => {
+export const Search = () => {
+	const search = useSelector((state) => state.search);
+	const dispatch = useDispatch();
+
 	return (
 		<form className={styles.form} onSubmit={(e) => e.preventDefault()}>
 			<div className={styles.field}>
@@ -10,7 +14,9 @@ export const Search = ({ search, setSearch }) => {
 					value={search}
 					name="search"
 					placeholder="Поиск"
-					onChange={({ target }) => setSearch(target.value)}
+					onChange={({ target }) =>
+						dispatch({ type: 'SEARCH', payload: target.value })
+					}
 				/>
 				<div className={styles.icon}>
 					<svg

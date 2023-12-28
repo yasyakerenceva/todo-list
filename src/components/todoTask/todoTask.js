@@ -2,9 +2,9 @@ import { useRef, useState } from 'react';
 import { useRequestDeleteTask, useRequestUpdateTask } from '../../hooks';
 import styles from './todoTask.module.css';
 
-export const TodoTask = ({ id, title, refreshTasks, setRefreshTasks }) => {
-	const { requestDeleteTask } = useRequestDeleteTask(refreshTasks, setRefreshTasks);
-	const { requestUpdateTask } = useRequestUpdateTask(refreshTasks, setRefreshTasks);
+export const TodoTask = ({ id, title }) => {
+	const { requestDeleteTask } = useRequestDeleteTask();
+	const { requestUpdateTask } = useRequestUpdateTask();
 	const [isInputVisible, setIsInputVisible] = useState(false);
 	const [valueEdit, setValueEdit] = useState(title);
 	const refInputEdit = useRef(null);

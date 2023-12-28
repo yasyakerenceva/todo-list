@@ -1,13 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './filter.module.css';
 
-export const Filter = ({ isCheckingNumTasks, isSortAsc, setIsSortAsc }) => {
+export const Filter = () => {
+	const tasks = useSelector((state) => state.tasks);
+	const isSortAsc = useSelector((state) => state.isSortAsc);
+	const dispatch = useDispatch();
+
 	return (
 		<label className={styles.container}>
 			<input
 				type="checkbox"
 				checked={isSortAsc}
-				onChange={({ target }) => setIsSortAsc(target.checked)}
-				disabled={!isCheckingNumTasks}
+				onChange={({ target }) =>
+					dispatch({ type: 'IS_SORT', payload: target.checked })
+				}
+				disabled={!tasks.length}
 			/>
 			<svg
 				width="50px"
